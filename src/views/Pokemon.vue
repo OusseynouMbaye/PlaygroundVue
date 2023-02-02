@@ -10,47 +10,35 @@
 
 <script>
 import PokemonCard from "../components/PokemonCard.vue";
+import PokemonService from "../services/PokemonListService.js";
+
 export default {
   components: {
     PokemonCard,
   },
   data() {
     return {
-      pokemonData: [
-        {
-          id: 1,
-          pokedexId: 1,
-          name: "Bulbizarre",
-          image:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-          slug: "Bulbizarre",
-          stats: {
-            HP: 45,
-            attack: 49,
-            defense: 49,
-            special_attack: 65,
-            special_defense: 65,
-            speed: 45,
-          },
-        },
-        {
-          id: 2,
-          pokedexId: 2,
-          name: "Herbizarre",
-          image:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
-          slug: "Herbizarre",
-          stats: {
-            HP: 60,
-            attack: 62,
-            defense: 63,
-            special_attack: 80,
-            special_defense: 80,
-            speed: 60,
-          },
-        },
-      ],
+      pokemonData: null,
     };
+  },
+  created() {
+    PokemonService.getPokemon()
+      .then((response) => {
+        // console.log('pokemonData',response.data);
+        this.pokemonData = response.data;
+        // console.log(this.pokemonData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    fetch("https://my-json-server.typicode.com/OusseynouMbaye/PlaygroundVue/pokemonData")
+      .then((response) =>
+        console.log(
+          "🚀fetch",
+          response.json()
+        )
+      )
+      .then((data) => console.log(data));
   },
 };
 </script>
@@ -58,6 +46,6 @@ export default {
 <style lang="css" scoped>
 .container {
   display: flex;
-    gap: 32px;
+  gap: 32px;
 }
 </style>
