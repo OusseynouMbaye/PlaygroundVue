@@ -22,7 +22,7 @@ export default {
     };
   },
   created() {
-    PokemonService.getPokemon()
+    PokemonService.getPokemons()
       .then((response) => {
         // console.log('pokemonData',response.data);
         this.pokemonData = response.data;
@@ -31,14 +31,6 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-    fetch("https://my-json-server.typicode.com/OusseynouMbaye/PlaygroundVue/pokemonData")
-      .then((response) =>
-        console.log(
-          "🚀fetch",
-          response.json()
-        )
-      )
-      .then((data) => console.log(data));
   },
 };
 </script>

@@ -9,9 +9,19 @@ const apiClient = axios.create({
   },
 });
 
-
-export default{
-    getPokemon(){
-        return apiClient.get('/pokemonData')
-    }
-}
+export default {
+  /**
+   *
+   */
+  getPokemons() {
+    return apiClient.get("/pokemonData");
+  },
+  /**
+   * Get pokemon by id
+   * @param {*} id
+   * @returns
+   */
+  getPokemon(id) {
+    return apiClient.get("/pokemonData/" + id);
+  },
+};

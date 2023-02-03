@@ -1,15 +1,14 @@
 <template>
-  <div class="poke_card">
-    <article class="poke_card_article">
-      <img :class="imgPoke" :src="pokemon.image" alt="" />
-      <div class="poke_card_content">
-        <h4>{{ pokemon.name }}</h4>
-        <p>HP :{{ pokemon.stats.HP }}</p>
-        <p>attack :{{ pokemon.stats.attack }}</p>
-        <p>defense:{{ pokemon.stats.defense }}</p>
-      </div>
-    </article>
-  </div>
+  <router-link to="/pokeapp/1">
+    <div class="poke_card">
+      <article class="poke_card_article">
+        <img :class="imgPoke" :src="pokemon.image" alt="" />
+        <div class="poke_card_content">
+          <h4>{{ pokemon.name }}</h4>
+        </div>
+      </article>
+    </div>
+  </router-link>
 </template>
 
 <script>
